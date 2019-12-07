@@ -1,0 +1,20 @@
+.linkContainer {
+  display: flex;
+  margin-right: 1.25rem;
+  height: 100%;
+  align-items: center;
+  font-size: 1.5rem;
+}
+
+.linkContainerActive {
+  border-bottom: 1.5px solid rebeccapurple;
+}
+
+.linkText {
+  color: black;
+  text-decoration: none;
+}
+
+.linkTextActive {
+  color: rebeccapurple;
+}

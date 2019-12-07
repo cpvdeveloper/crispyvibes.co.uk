@@ -1,0 +1,16 @@
+.bioContainer {
+  display: flex;
+  align-items: center;
+  margin-bottom: 3rem;
+}
+
+.image {
+  margin-bottom: 0;
+  margin-right: 1rem;
+  min-width: 50px;
+  border-radius: 100%;
+}
+
+.bioText {
+  margin-bottom: 0;
+}

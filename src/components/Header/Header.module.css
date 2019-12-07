@@ -1,0 +1,15 @@
+.header {
+  background: none;
+  margin-bottom: 2rem;
+  margin-top: 0.5rem;
+  height: 2.5rem;
+  width: 100%;
+  overflow-y: scroll;
+}
+
+.nav {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  min-width: 700px;
+}
