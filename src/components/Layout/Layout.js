@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Header from '../Header'
 import 'typeface-montserrat'
-import './layout.css'
+import './Layout.css'
 
 function Layout({ children, location }) {
   return (
