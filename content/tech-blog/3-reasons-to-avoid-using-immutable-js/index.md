@@ -6,7 +6,7 @@ length: '5 min'
 link: ''
 ---
 
-Redux wouldn't work without immutable data, and so it makes sense that the immutable-js library--which helps to ensure this immutability--has become used so frequently with Redux. But having used ImmutableJS in a few large-scale React-Redux applications, it's become clear that using the library comes at a price, and that once in, it's difficult to opt-out.
+Redux wouldn't work without immutable data, and so it makes sense that the immutable-js library--which helps to ensure this immutability--has become used so frequently with Redux. But after working with ImmutableJS in a few large-scale React-Redux applications, it's clear that using the library comes at a price, and that once in, it's difficult to opt-out.
 
 The 3 reasons to avoid using ImmutableJS with Redux are:
 
@@ -20,7 +20,7 @@ Before diving into these, here's a brief run-through of what immutability is, wh
 
 Redux decides if a component should re-render by checking if the application's state has changed. When this state is an immutable object--meaning that once created it can't then be changed, or mutated--Redux can make this check very quickly and easily.
 
-This is because when objects are immutable, the only way to update them is to create a new object with the desired change. New objects have new references in memory and so a shallow comparison is all that's needed. Redux doesn't have to check the entire state object for differences, it can simply check if it's a different object to the previous one, or expressed as an over-simplified ternary:
+This is because when objects are immutable, the only way to update them is to create a new object with the desired change. New objects have new references in memory and so a shallow comparison is all that's needed. Redux doesn't have to check the entire state object for differences, it can simply check if it's a different object to the previous one, or to express this as an over-simplified ternary:
 
 ```js
 previousStateObject !== newStateObject ? updateThings() : null
@@ -28,7 +28,7 @@ previousStateObject !== newStateObject ? updateThings() : null
 
 ### What does ImmutableJS offer?
 
-ImmutableJS offers a range of immutable data structures and APIs to update them, which generally look quite similar to plain JavaScript.
+ImmutableJS offers a range of immutable data structures and APIs to update them, which _generally_ look quite similar to plain JavaScript.
 
 For example, objects can be handled as
 
@@ -44,7 +44,7 @@ const myImmutableList = Immutable.fromJS([1, 2, 3])
 myImmutableList.push(4)
 ```
 
-This ensures that `myImmutableMap`&nbsp;and `myImmutableList`&nbsp;are never mutated, and they can then be converted back to plain JavaScript objects/arrays when necessary using the `toJS()`&nbsp;function. ImmutableJS also has a lot of performance optimization going on behind the scenes to make these immutable updates performant.
+This ensures that `myImmutableMap`&nbsp;and `myImmutableList`&nbsp;are never mutated, and they can then be converted back to plain JavaScript objects/arrays when necessary using the `toJS()`&nbsp;function. ImmutableJS also has a lot of performance optimization going on behind the scenes to make these immutable updates fast and efficient.
 
 Here's how ImmutableJS works with Redux in short:
 
@@ -79,25 +79,25 @@ Does a function expect an array or ImmutableJS list as an argument? What does it
 
 <center><small>Ignoring the fact that these could be written more concisely…</small></center><br />
 
-To avoid this in-between state whilst also abiding by the Redux docs quoted above, all props must be converted to plain JavaScript before being passed to components. This can be achieved easily, but not very elegantly.
+To avoid this uncertainty, whilst also abiding by the Redux docs quoted above, all props must be converted to plain JavaScript before being passed to components. This can be achieved easily, but not very elegantly.
 
-A naive approach is to use `toJS()`&nbsp;on all props before they are passed, but this is a bad idea for reasons discussed below in Reason 2. A higher-order component (HoC) can be used to more efficiently make the conversion, but this requires wrapping already-wrapped connected components resulting in `connect(toJS(MyComponent))`&nbsp;where `toJS()`&nbsp;is a fairly intimidating HoC that looks something like this:
+A naive approach is to use `toJS()`&nbsp;on all props before they are passed, but this is a bad idea for reasons discussed below in Reason 2. A higher-order component (HoC) can be used to more efficiently make the conversion, but this requires wrapping each already-wrapped connected component resulting in `connect(toJS(MyComponent))`&nbsp;where `toJS()`&nbsp;is a fairly intimidating HoC that looks something like this:
 
 `gist:cpv123/d2ffcfb34c2789b04c373c59a9c98286#to-js-hoc.js`
 
-There is an NPM package `with-immutable-props-to-js`&nbsp;that offers this kind of HoC, but hiding this complex code doesn't make it much more pleasing to use.
+There is an NPM package `with-immutable-props-to-js`&nbsp;that offers this kind of HoC, but hiding such complex code doesn't make it much more pleasing to use.
 
 ### Reason 2: It can kill Redux performance
 
-ImmutableJS itself is cleverly optimized for performance, but if used incorrectly with Redux--specifically within `mapStateToProps`--it can actually worsen performance. I've written about this previously without explicitly calling out ImmutableJS, despite it being possibly the worst culprit of them all.
+ImmutableJS itself is cleverly optimized for performance, but if used incorrectly with Redux--specifically within `mapStateToProps`--it can actually worsen the overall application performance. I've written about this previously without explicitly calling out ImmutableJS, despite it being possibly the worst culprit of them all.
 
-The problem arises when converting an ImmutableJS object to plain JavaScript using `toJS()`&nbsp;or `toArray()`. These operations are not only expensive to run on large objects, they are result in a new object being created each time. Thinking back to shallow equality checks, this means that when Redux compares the results of consecutive `mapStateToProps`&nbsp;functions, they always look different which results in a re-render of the Redux-connected component.
+The problem arises when converting an ImmutableJS object to plain JavaScript using `toJS()`&nbsp;or `toArray()`. These operations are not only expensive to run on large objects, but they also result in a new object being created each time. Thinking back to shallow equality checks, this means that when Redux compares the results of consecutive `mapStateToProps`&nbsp;functions, they always look different which results in a re-render of the Redux-connected component.
 
 `gist:cpv123/235e68c989422b6ecbeed5f6eaacfed3#map-state-with-to-js.js`
 
 <center><small>NumbersComponent will re-render more often than required--every time mapStateToProps is called.</small></center><br />
 
-Unfortunately, the options for avoiding the use of `toJS()`&nbsp;in `mapStateToProps`&nbsp;can be difficult for reasons discussed in Reason 1: either leave all props as ImmutableJS objects or succumb to yet another NPM package and/or another higher-order component.
+Unfortunately, the options for avoiding the use of `toJS()`&nbsp;in `mapStateToProps`&nbsp;can be difficult as discussed in Reason 1: either leave all props as ImmutableJS objects or succumb to yet another NPM package and/or another higher-order component.
 
 ### Reason 3: It allows the application state to become complex and deeply nested
 
@@ -124,10 +124,10 @@ This is one of the places where ImmutableJS comes to the rescue with:
 immutableState.setIn(['deeply', 'nested', 'data'], 'new data')
 ```
 
-But looking at this from a more cynical perspective, having this convenient `setIn`&nbsp;syntax means that developers are even less conscience of the state shape. When this is the case, there's no incentive to optimize state shape, which if done could bring benefits to both the developer and the application performance.
+But from a cynical perspective, this syntax is perhaps a little too convenient. When it's this easy to update the state, no matter how complex or nested, it's unlikely that a developer will ever question it. This leaves no incentive to optimize state shape, and so the potential benefits that this could bring (for both the developer and application performance) will never be realised.
 
 ### Summary
 
-ImmutableJS can help to ensure that the Redux state remains immutable, which is necessary for Redux to do its job properly. However, using the library comes at a price: it will spread throughout your codebase, it can harm performance, and it can hide some of the nuances of managing state effectively.
+ImmutableJS can help to ensure that an application's state remains immutable, which is necessary for Redux to do its job properly. However, using the library comes at a price: it will quickly spread throughout your codebase even into places that don't care about immutable data, it can harm performance if not used correctly, and it can hide some of the nuances of managing state effectively.
 
 If you're starting a new Redux application, have a think about these costs before taking the one-way jump into ImmutableJS.
