@@ -16,7 +16,9 @@ function CoffeePage({ location }) {
   useEffect(() => {
     const fetchShops = async () => {
       try {
-        const shops = await axios.get(process.env.COFFEE_SHOPS_URL)
+        const shops = await axios.get(process.env.COFFEE_SHOPS_URL, {
+          headers: { 'x-api-key': process.env.API_KEY },
+        })
         setShops(shops.data.Items)
       } catch (err) {
         setShopsError(true)
@@ -75,21 +77,31 @@ function CoffeePage({ location }) {
     return sortedLocations
   }
 
+  const renderShopsList = () => (
+    <>
+      <h1>{shopsToRender.length} pretty good coffee shops</h1>
+      <CoffeeShopsNav
+        locations={locationsToRender()}
+        selectedLocation={locationFilter}
+        onSearch={handleSearch}
+        onClickLocation={handleClickLocation}
+      />
+      {shopsToRender.map(shop => (
+        <CoffeeShop key={shop.name} shop={shop} />
+      ))}
+    </>
+  )
+
   return (
     <Layout location={location}>
       <SEO title="Coffee" description="List of coffee shops" />
-      <>
-        <h1>{shopsToRender.length} pretty good coffee shops</h1>
-        <CoffeeShopsNav
-          locations={locationsToRender()}
-          selectedLocation={locationFilter}
-          onSearch={handleSearch}
-          onClickLocation={handleClickLocation}
-        />
-        {shopsToRender.map(shop => (
-          <CoffeeShop key={shop.name} shop={shop} />
-        ))}
-      </>
+      {shopsError ? (
+        <h1>Error loading shops</h1>
+      ) : shopsLoading ? (
+        <h1>Loading shops...</h1>
+      ) : (
+        renderShopsList()
+      )}
     </Layout>
   )
 }
