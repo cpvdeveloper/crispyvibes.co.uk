@@ -13,31 +13,23 @@ function CoffeePage({ location }) {
   const [locationFilter, setLocationFilter] = useState('')
   const [searchFilter, setSearchFilter] = useState('')
 
-  // useEffect(() => {
-  // 	const fetchShops = async () => {
-  // 		try {
-  // 			const shops = await axios.get(
-  // 				'https://etmxlmp962.execute-api.eu-west-2.amazonaws.com/test/shops'
-  // 			)
-  // 			setShops(shops.data.Items)
-  // 		} catch (err) {
-  // 			setShopsError(true)
-  // 		} finally {
-  // 			setShopsLoading(false)
-  // 		}
-  // 	}
-  // 	fetchShops()
-  // })
+  useEffect(() => {
+    const fetchShops = async () => {
+      try {
+        const shops = await axios.get(process.env.COFFEE_SHOPS_URL)
+        setShops(shops.data.Items)
+      } catch (err) {
+        setShopsError(true)
+      } finally {
+        setShopsLoading(false)
+      }
+    }
+    fetchShops()
+  }, [])
 
-  const shopsList = [
-    { name: 'Chairs and Coffee', location: 'London - Fulham' },
-    { name: 'Coffee Underground', location: 'London - West Kensington' },
-    { name: 'Test', location: 'Brussels' },
-  ]
-
-  const locations = !shopsList.length
+  const locations = !shops.length
     ? []
-    : shopsList.reduce(
+    : shops.reduce(
         (acc, curr) => {
           if (curr.location.startsWith('London')) {
             return acc
@@ -68,8 +60,8 @@ function CoffeePage({ location }) {
   }
 
   const shopsToRender = !areShopsFiltered
-    ? shopsList
-    : shopsList
+    ? shops
+    : shops
         .filter(shop => shop.location.includes(locationFilter))
         .filter(
           shop =>
