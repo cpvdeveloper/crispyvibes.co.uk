@@ -12,6 +12,12 @@ const navItems = [
 ]
 
 const Header = ({ location }) => {
+  const isLinkActive = pathname => {
+    return (
+      location.pathname === pathname || location.pathname === `${pathname}/`
+    )
+  }
+
   return (
     <header className={css.header}>
       <nav className={css.nav}>
@@ -20,7 +26,7 @@ const Header = ({ location }) => {
             key={pathname}
             to={pathname}
             title={title}
-            isActive={location.pathname === pathname}
+            isActive={isLinkActive(pathname)}
           />
         ))}
       </nav>
