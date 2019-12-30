@@ -5,13 +5,19 @@ import css from './Header.module.css'
 
 const navItems = [
   { title: 'Home', pathname: '/' },
-  { title: 'Coffee', pathname: '/coffee' },
-  { title: 'My Blog', pathname: '/my-blog' },
   { title: 'Tech Blog', pathname: '/tech-blog' },
+  { title: 'Coffee', pathname: '/coffee' },
   { title: 'Code', pathname: '/code' },
+  { title: 'My Blog', pathname: '/my-blog' },
 ]
 
 const Header = ({ location }) => {
+  const isLinkActive = pathname => {
+    return (
+      location.pathname === pathname || location.pathname === `${pathname}/`
+    )
+  }
+
   return (
     <header className={css.header}>
       <nav className={css.nav}>
@@ -20,7 +26,7 @@ const Header = ({ location }) => {
             key={pathname}
             to={pathname}
             title={title}
-            isActive={location.pathname === pathname}
+            isActive={isLinkActive(pathname)}
           />
         ))}
       </nav>
