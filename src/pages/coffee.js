@@ -16,7 +16,7 @@ function CoffeePage({ location }) {
   useEffect(() => {
     const fetchShops = async () => {
       try {
-        const shops = await axios.get(process.env.COFFEE_SHOPS_URL, {
+        const shops = await axios.get(process.env.GATSBY_COFFEE_SHOPS_URL, {
           headers: { 'x-api-key': process.env.API_KEY },
         })
         setShops(shops.data.Items)
@@ -96,7 +96,7 @@ function CoffeePage({ location }) {
     <Layout location={location}>
       <SEO title="Coffee" description="List of coffee shops" />
       {shopsError ? (
-        <h1>Error loading shops</h1>
+        <h1>Error loading shops {process.env.GATSBY_COFFEE_SHOPS_URL}</h1>
       ) : shopsLoading ? (
         <h1>Loading shops...</h1>
       ) : (
