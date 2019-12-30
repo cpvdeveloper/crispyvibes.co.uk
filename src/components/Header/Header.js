@@ -5,10 +5,10 @@ import css from './Header.module.css'
 
 const navItems = [
   { title: 'Home', pathname: '/' },
-  { title: 'Coffee', pathname: '/coffee' },
-  { title: 'My Blog', pathname: '/my-blog' },
   { title: 'Tech Blog', pathname: '/tech-blog' },
+  { title: 'Coffee', pathname: '/coffee' },
   { title: 'Code', pathname: '/code' },
+  { title: 'My Blog', pathname: '/my-blog' },
 ]
 
 const Header = ({ location }) => {
