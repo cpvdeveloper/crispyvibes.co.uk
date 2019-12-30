@@ -1,5 +1,5 @@
 ---
-title: '3 reason to avoid using ImmutableJS with Redux'
+title: '3 reasons to avoid using ImmutableJS with Redux'
 date: '2019-12-29'
 description: 'Once in, you’ll never get out.'
 length: '5 min'
