@@ -18,12 +18,11 @@ Before diving into these, here's a brief run-through of what immutability is, wh
 
 ### Immutability and Redux
 
-Redux decides if a component should re-render by checking if the application's state has changed. When this state is an immutable object--meaning that once created it can't then be changed, or mutated--Redux can make this check very quickly and easily.
-
-This is because when objects are immutable, the only way to update them is to create a new object with the desired change. New objects have new references in memory and so a shallow comparison is all that's needed. Redux doesn't have to check the entire state object for differences, it can simply check if it's a different object to the previous one, or to express this as an over-simplified ternary:
+Redux decides if a component should re-render by checking if any piece of the application's state relevant to that component has changed. When the application's state is an immutable object - meaning that once created it can't then be changed, or mutated - Redux can make this check very quickly and easily.
+This is because when objects are immutable, the only way to update them is to create a new object with the desired change. New objects have new references in memory and so a shallow comparison is all that's needed. For each bit of state that a component cares about--defined in `mapStateToProps`--Redux can do the following no matter how complex that bit of state might be:
 
 ```js
-previousStateObject !== newStateObject ? updateThings() : null
+previousBitOfState !== newBitOfState ? updateComponent() : null
 ```
 
 ### What does ImmutableJS offer?
@@ -44,7 +43,7 @@ const myImmutableList = Immutable.fromJS([1, 2, 3])
 myImmutableList.push(4)
 ```
 
-This ensures that `myImmutableMap`&nbsp;and `myImmutableList`&nbsp;are never mutated, and they can then be converted back to plain JavaScript objects/arrays when necessary using the `toJS()`&nbsp;function. ImmutableJS also has a lot of performance optimization going on behind the scenes to make these immutable updates fast and efficient.
+This ensures that `myImmutableMap`&nbsp;and `myImmutableList`&nbsp;are never mutated, and they can then be converted back to plain JavaScript objects/arrays when necessary using the `toJS()`&nbsp;function. ImmutableJS also has a lot of performance optimization going on behind the scenes to make these immutable updates fast and efficient. For example, the push and pop methods of an ImmutableJS `List`&nbsp;scale with `O(1)`&nbsp;time complexity even though they result in a new object.
 
 Here's how ImmutableJS works with Redux in short:
 
