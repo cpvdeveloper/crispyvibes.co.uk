@@ -5,28 +5,15 @@ import Layout from '../components/Layout'
 import CoffeeShop from '../components/CoffeeShop'
 import CoffeeShopsNav from '../components/CoffeeShopsNav'
 
-function CoffeePage({ location }) {
+function CoffeePage({ location, pageContext }) {
   const [shops, setShops] = useState([])
-  const [shopsLoading, setShopsLoading] = useState(true)
   const [shopsError, setShopsError] = useState(false)
   const [areShopsFiltered, setAreShopsFiltered] = useState(false)
   const [locationFilter, setLocationFilter] = useState('')
   const [searchFilter, setSearchFilter] = useState('')
 
   useEffect(() => {
-    const fetchShops = async () => {
-      try {
-        const shops = await axios.get(process.env.GATSBY_COFFEE_SHOPS_URL, {
-          headers: { 'x-api-key': process.env.GATSBY_API_KEY },
-        })
-        setShops(shops.data.Items)
-      } catch (err) {
-        setShopsError(true)
-      } finally {
-        setShopsLoading(false)
-      }
-    }
-    fetchShops()
+    setShops(pageContext.coffeeShops)
   }, [])
 
   const locations = !shops.length
@@ -95,13 +82,7 @@ function CoffeePage({ location }) {
   return (
     <Layout location={location}>
       <SEO title="Coffee" description="List of coffee shops" />
-      {shopsError ? (
-        <h1>Error loading shops</h1>
-      ) : shopsLoading ? (
-        <h1>Loading shops...</h1>
-      ) : (
-        renderShopsList()
-      )}
+      {shopsError ? <h1>Error loading shops</h1> : renderShopsList()}
     </Layout>
   )
 }
