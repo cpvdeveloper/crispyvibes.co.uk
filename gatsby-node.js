@@ -1,5 +1,9 @@
 const path = require(`path`)
+const axios = require('axios')
 const { createFilePath } = require(`gatsby-source-filesystem`)
+require('dotenv').config({
+  path: `.env.${process.env.NODE_ENV}`,
+})
 
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage, createRedirect } = actions
@@ -60,6 +64,30 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
       name: `slug`,
       node,
       value,
+    })
+  }
+}
+
+const getCoffeeShops = async () => {
+  const shops = await axios.get(process.env.GATSBY_COFFEE_SHOPS_URL, {
+    headers: { 'x-api-key': process.env.GATSBY_API_KEY },
+  })
+  return shops.data.Items
+}
+
+exports.onCreatePage = async ({ page, actions }) => {
+  if (page.path === '/coffee' || page.path === '/coffee/') {
+    const { createPage, deletePage } = actions
+    deletePage(page)
+
+    const coffeeShops = await getCoffeeShops()
+
+    createPage({
+      ...page,
+      context: {
+        ...page.context,
+        coffeeShops,
+      },
     })
   }
 }
