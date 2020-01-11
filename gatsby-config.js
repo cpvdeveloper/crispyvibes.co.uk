@@ -2,7 +2,7 @@ module.exports = {
   siteMetadata: {
     title: `cpv`,
     description: `Personal site`,
-    author: `Chris Vibert`,
+    author: `Chris`,
     profiles: {
       github: `https://github.com/cpv123`,
       medium: `https://medium.com/@cp.vibert`,
