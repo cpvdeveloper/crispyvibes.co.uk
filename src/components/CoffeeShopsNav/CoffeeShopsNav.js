@@ -8,6 +8,7 @@ function CoffeeShopsNav({
   onClickLocation,
   onSearch,
   selectedLocation,
+  onSortByRating,
 }) {
   return (
     <div>
@@ -16,6 +17,7 @@ function CoffeeShopsNav({
         placeholder="Search"
         onChange={e => onSearch(e.target.value)}
       />
+      <button onClick={onSortByRating}>Sort by rating</button>
       <nav>
         <ul className={css.list}>
           {locations.map(location => (
