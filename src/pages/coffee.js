@@ -9,6 +9,7 @@ function CoffeePage({ location, pageContext }) {
   const [areShopsFiltered, setAreShopsFiltered] = useState(false)
   const [locationFilter, setLocationFilter] = useState('')
   const [searchFilter, setSearchFilter] = useState('')
+  const [sortByRating, setSortByRating] = useState(null)
 
   const locations = !shops.length
     ? []
@@ -42,6 +43,24 @@ function CoffeePage({ location, pageContext }) {
     setSearchFilter(input.toLowerCase())
   }
 
+  const handleSortByRating = () => {
+    let sortedShops
+    const sortDescending = () => {
+      sortedShops = shops.sort((a, b) => b.rating - a.rating)
+      setShops(sortedShops)
+      setSortByRating(1)
+    }
+    if (!sortByRating) {
+      sortDescending()
+    } else if (sortByRating === 1) {
+      sortedShops = shops.sort((a, b) => a.rating - b.rating)
+      setShops(sortedShops)
+      setSortByRating(-1)
+    } else {
+      sortDescending()
+    }
+  }
+
   const shopsToRender = !areShopsFiltered
     ? shops
     : shops
@@ -66,6 +85,7 @@ function CoffeePage({ location, pageContext }) {
         selectedLocation={locationFilter}
         onSearch={handleSearch}
         onClickLocation={handleClickLocation}
+        onSortByRating={handleSortByRating}
       />
       {shopsToRender.map(shop => (
         <CoffeeShop key={shop.name} shop={shop} />
