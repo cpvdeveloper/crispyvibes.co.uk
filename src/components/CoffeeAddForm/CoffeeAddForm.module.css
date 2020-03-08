@@ -4,10 +4,20 @@
   max-width: 300px;
 }
 
-.addForm > input {
+.addForm > input:not([type='checkbox']) {
   margin-bottom: 1rem;
 }
 
 .errorMessage {
   color: red;
+}
+
+.deployTriggerInput {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.deployTriggerInput > span {
+  margin-right: 0.5rem;
 }

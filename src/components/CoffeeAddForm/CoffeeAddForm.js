@@ -6,7 +6,8 @@ function CoffeeAddForm() {
   const initialForm = {
     name: '',
     location: '',
-    rating: null,
+    rating: '',
+    shouldTriggerDeploy: false,
   }
   const [shopDetails, setShopDetails] = useState(initialForm)
   const [fetchError, setFetchError] = useState(false)
@@ -17,10 +18,17 @@ function CoffeeAddForm() {
 
   const handleInputChange = e => {
     const { name, value } = e.target
-    setShopDetails({
-      ...shopDetails,
+    setShopDetails(prevDetails => ({
+      ...prevDetails,
       [name]: value,
-    })
+    }))
+  }
+
+  const handleTriggerDeployChange = () => {
+    setShopDetails(prevDetails => ({
+      ...prevDetails,
+      shouldTriggerDeploy: !prevDetails.shouldTriggerDeploy,
+    }))
   }
 
   const handleSubmit = async () => {
@@ -57,6 +65,15 @@ function CoffeeAddForm() {
         placeholder="Rating"
         onChange={handleInputChange}
       />
+      <div className={css.deployTriggerInput}>
+        <span>Should trigger deploy</span>
+        <input
+          type="checkbox"
+          value={shopDetails.shouldTriggerDeploy}
+          name="shouldTriggerDeploy"
+          onChange={handleTriggerDeployChange}
+        />
+      </div>
       <button onClick={handleSubmit}>Add shop</button>
       {fetchError && <div className={css.errorMessage}>Unable to add shop</div>}
     </div>
