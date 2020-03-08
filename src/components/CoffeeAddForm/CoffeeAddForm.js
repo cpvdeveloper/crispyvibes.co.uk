@@ -1,0 +1,66 @@
+import React, { useState } from 'react'
+import axios from 'axios'
+import css from './CoffeeAddForm.module.css'
+
+function CoffeeAddForm() {
+  const initialForm = {
+    name: '',
+    location: '',
+    rating: null,
+  }
+  const [shopDetails, setShopDetails] = useState(initialForm)
+  const [fetchError, setFetchError] = useState(false)
+
+  const resetForm = () => {
+    setShopDetails(initialForm)
+  }
+
+  const handleInputChange = e => {
+    const { name, value } = e.target
+    setShopDetails({
+      ...shopDetails,
+      [name]: value,
+    })
+  }
+
+  const handleSubmit = async () => {
+    try {
+      await axios.post(process.env.GATSBY_COFFEE_SHOPS_URL, {
+        body: shopDetails,
+      })
+      resetForm()
+    } catch (err) {
+      setFetchError(true)
+    }
+  }
+
+  return (
+    <div className={css.addForm}>
+      <input
+        name="name"
+        value={shopDetails.name}
+        placeholder="Name"
+        onChange={handleInputChange}
+      />
+      <input
+        name="location"
+        value={shopDetails.location}
+        placeholder="Location"
+        onChange={handleInputChange}
+      />
+      <input
+        name="rating"
+        type="number"
+        max="5"
+        min="0"
+        value={shopDetails.rating}
+        placeholder="Rating"
+        onChange={handleInputChange}
+      />
+      <button onClick={handleSubmit}>Add shop</button>
+      {fetchError && <div className={css.errorMessage}>Unable to add shop</div>}
+    </div>
+  )
+}
+
+export { CoffeeAddForm }

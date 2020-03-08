@@ -1,0 +1,13 @@
+.addForm {
+  display: flex;
+  flex-direction: column;
+  max-width: 300px;
+}
+
+.addForm > input {
+  margin-bottom: 1rem;
+}
+
+.errorMessage {
+  color: red;
+}
