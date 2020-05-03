@@ -7,7 +7,6 @@ const navItems = [
   { title: 'Tech Blog', pathname: '/tech-blog' },
   { title: 'Coffee', pathname: '/coffee' },
   { title: 'Code', pathname: '/code' },
-  { title: 'My Blog', pathname: '/my-blog' },
 ]
 
 const Header = ({ location }) => {
