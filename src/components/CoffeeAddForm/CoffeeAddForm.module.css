@@ -21,3 +21,7 @@
 .deployTriggerInput > span {
   margin-right: 0.5rem;
 }
+
+.starRatingContainer {
+  margin-bottom: 1rem;
+}
