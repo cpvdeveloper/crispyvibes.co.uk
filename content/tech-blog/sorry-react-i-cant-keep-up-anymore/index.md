@@ -1,7 +1,7 @@
 ---
 title: 'Sorry React, but I can`t keep up anymore'
 date: '2020-06-14'
-description: 'It`s not you, it`s me.'
+description: 'JavaScript fatigue taking its toll.'
 length: '4 min'
 link: 'TBC'
 ---
