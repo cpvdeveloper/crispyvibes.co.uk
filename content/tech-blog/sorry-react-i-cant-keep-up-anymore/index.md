@@ -3,7 +3,7 @@ title: 'Sorry React, but I can`t keep up anymore'
 date: '2020-06-14'
 description: 'JavaScript fatigue taking its toll.'
 length: '4 min'
-link: 'TBC'
+link: 'https://medium.com/swlh/sorry-react-but-i-cant-keep-up-anymore-6b6c8415708c'
 ---
 
 For the last few years, I've tried hard to keep up with the React ecosystem, and more generally the surrounding JavaScript ecosystem that seems to move impossibly fast.
