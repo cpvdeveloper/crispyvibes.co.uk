@@ -108,7 +108,7 @@ Here’s an example of a route used to update the status of a patient. It demons
 
     /pages/api/user/[patientId]/update-status.js
 
-which means that we can call this endpoint with a patient’s ID in the URL (made available to the handler as req.query.patientId) and have that specific patient updated.
+which means that we can call this endpoint with a patient’s ID in the URL (made available to the handler as `req.query.patientId`) and have that specific patient updated.
 
 `gist:cpv123/4d8767614e2bd08e2c58d96e13600913#update-status.js`
 
@@ -116,7 +116,7 @@ Comparing an API route to a typical Express route handler, there are a few immed
 
 1. Connecting to the database must be done at the start of every handler.
 
-1. Middleware comes in the form of higher-order functions that wrap and enhance the handler — above we’re using withAuth middleware that checks for authentication before allowing the request to be handled.
+1. Middleware comes in the form of higher-order functions that wrap and enhance the handler — above we’re using `withAuth` middleware that checks for authentication before allowing the request to be handled.
 
 Both of these differences come from the fact that API routes are deployed as standalone, serverless lambda functions which are only alive when they need to be. Whilst this higher-order function middleware takes some getting used to, this lambda nature makes them highly scalable, and they’re even optimised for a ‘fast’ cold start.
 
@@ -124,7 +124,7 @@ Both of these differences come from the fact that API routes are deployed as sta
 
 Most of this was about NextJS version 9 and its API Routes feature, but the best advice I can give is applicable to NextJS in general.
 
-With NextJS you’re sometimes writing code that will run on both the client and server-side, which tends to require some extra thought given that you may or may not have a window object.
+With NextJS you’re sometimes writing code that will run on both the client and server-side, which tends to require some extra thought given that you may or may not have a `window` object.
 
 Tip: instead of continuously checking for this, write a set of reusable ‘isomorphic’ helper functions that will run seamlessly in both environments.
 
@@ -132,6 +132,6 @@ A good example is an isomorphic redirect function which could look something lik
 
 `gist:cpv123/aa3bbb3de02249d0a4b43d9780527447#isomorphic-redirect.js`
 
-Checking for the existence of a ctx object and its req property is a way of checking which environment the code is in: this object will exist on the server-side but not on the client-side.
+Checking for the existence of a `ctx` object and its `req` property is a way of checking which environment the code is in: this object will exist on the server-side but not on the client-side.
 
 Over time you can build a suite of these isomorphic helpers that can even be used across projects, not just for redirects but also for handling cookies, authenticated data fetching, and more.
