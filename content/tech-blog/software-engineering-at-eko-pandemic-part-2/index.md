@@ -1,7 +1,7 @@
 ---
 title: 'Software Engineering at Eko — Pandemic Edition Part II'
 date: '2020-06-28'
-description: 'Lessons learned during a busy few months.'
+description: 'More lessons learned during a busy few months.'
 length: '6 min'
 link: 'https://medium.com/@cp.vibert/software-engineering-at-eko-pandemic-edition-part-ii-db7197a8f329'
 ---
