@@ -1,18 +1,18 @@
 ---
-title: 'Software Engineering at Eko — Pandemic Edition Part I'
+title: 'Software Engineering at Amity — Pandemic Edition Part I'
 date: '2020-06-16'
 description: 'Lessons learned during a busy few months.'
 length: '6 min'
 link: 'https://medium.com/@cp.vibert/software-engineering-at-eko-pandemic-edition-part-i-75b8f4f578e6'
 ---
 
-![Part I logos: Eko, NextJS, Hasura](./part-1-logos.png)
+![Part I logos: Amity, NextJS, Hasura](./part-1-logos.png)
 
 <center><small>Part I topics: NextJS and Hasura.</small></center><br />
 
 My memories of the COVID-19 pandemic in many ways will be the same as most: a makeshift standing desk in the kitchen, a plummet in daily step-count, and a distorted view of hours, days and weeks.
 
-Where my memories differ is when I think about the work I did at [Eko](https://www.ekoapp.com/) during this time. Eko took on many exciting opportunities: helping hospitals to manage their potential COVID patients, helping companies, schools, and universities to work remotely, all whilst enhancing the core Eko products for existing clients.
+Where my memories differ is when I think about the work I did at [Amity](https://www.amity.co/) during this time. Amity took on many exciting opportunities: helping hospitals to manage their potential COVID patients, helping companies, schools, and universities to work remotely, all whilst enhancing the core Amity products for existing clients.
 
 During the few months that I stood at my desk in the kitchen (a stool placed on top of the table), I worked on 3 projects all with very different tech stacks. I wrote some good code and I wrote some bad code. I lost what feels like years of sleep, but more importantly, I gained what feels like years of experience.
 

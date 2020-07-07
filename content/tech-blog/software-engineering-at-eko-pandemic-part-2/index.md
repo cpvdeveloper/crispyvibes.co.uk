@@ -1,5 +1,5 @@
 ---
-title: 'Software Engineering at Eko — Pandemic Edition Part II'
+title: 'Software Engineering at Amity — Pandemic Edition Part II'
 date: '2020-06-28'
 description: 'More lessons learned during a busy few months.'
 length: '6 min'
@@ -19,7 +19,7 @@ Part II in the [series](https://medium.com/@cp.vibert/software-engineering-at-ek
 
 Before moving to Bangkok earlier this year, I’d never worked on an application that needed to support more than one language — hardcoding text in English was all I’d ever known.
 
-At [Eko](https://www.ekoapp.com/) we need to support many languages, and we do so mainly using the [react-intl](https://formatjs.io/docs/react-intl/) library. It’s simple to use, but until my second ‘pandemic project’, I’d never given much thought to how it works.
+At [Amity](https://amity.co/) we need to support many languages, and we do so mainly using the [react-intl](https://formatjs.io/docs/react-intl/) library. It’s simple to use, but until my second ‘pandemic project’, I’d never given much thought to how it works.
 
 This second project was an application for Doctors to manage potential COVID patients (built with NextJS which I talk about in [Part I](https://medium.com/@cp.vibert/software-engineering-at-eko-pandemic-edition-part-i-75b8f4f578e6)). We knew that the application would have to support the Thai language eventually, but to get moving quickly we started off with just hardcoded English.
 
@@ -67,7 +67,7 @@ Since the release of [Hooks](https://reactjs.org/docs/hooks-intro.html), React a
 
 Both hooks and higher-order components (HOCs) allow you to extract common logic for reuse across multiple components. Whether or not hooks can and should completely replace HOCs is debatable, but the reality of it is that hooks are replacing HOCs. Think of all your favourite libraries and you’ll find that they’re probably now advocating the use of hook alternatives like `useSelector` and `useHistory`.
 
-Despite this trend, the first of my three projects was working on an application using React 15 with no hooks but lots of HOCs — the application was built from functional components wrapped by HOCs from the [recompose](https://github.com/acdlite/recompose) library. This HOC-based architecture turned out to be a perfect solution to our requirement: to take the existing Eko App registration flow and modify it so that with the help of a few environment variables, it could also act as the registration flow for a completely new app.
+Despite this trend, the first of my three projects was working on an application using React 15 with no hooks but lots of HOCs — the application was built from functional components wrapped by HOCs from the [recompose](https://github.com/acdlite/recompose) library. This HOC-based architecture turned out to be a perfect solution to our requirement: to take the existing registration flow for Amity's Eko App and modify it so that with the help of a few environment variables, it could also act as the registration flow for a completely new app.
 
 We knew that this would mean lots of conditional logic throughout the app:
 
