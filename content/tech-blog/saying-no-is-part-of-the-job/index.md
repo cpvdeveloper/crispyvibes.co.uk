@@ -18,7 +18,7 @@ This might sound like a reasonable question for a Product Manager to ask, but fo
 
 And yet the team of Engineers remain silent, leaving the Product Manager increasingly pleased with their team of Engineers who will once again achieve the seemingly impossible.
 
-![No entry sign](./no-entry.jpeg)
+![No entry sign](./no-entry.png)
 
 And impossible it may be — or at least impossible to deliver the feature with any sort of quality, and without disrupting all other work.
 
