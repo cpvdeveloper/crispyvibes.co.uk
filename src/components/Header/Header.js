@@ -6,6 +6,7 @@ import css from './Header.module.css'
 const navItems = [
   { title: 'Tech Blog', pathname: '/tech-blog' },
   { title: 'Coffee', pathname: '/coffee' },
+  { title: 'Dev', pathname: '/dev-setup' },
 ]
 
 const Header = ({ location }) => {
