@@ -1,0 +1,8 @@
+.postsListContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.postsListContainer > h2 {
+  margin-bottom: 2rem;
+}
