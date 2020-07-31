@@ -1,13 +1,31 @@
 import React from 'react'
+import { graphql, useStaticQuery } from 'gatsby'
 import ExternalBlogPostItem from './ExternalBlogPostItem'
+import css from './ExternalBlogPosts.module.css'
 
-const posts = [{ title: 'Test', url: 'test' }]
-const ExternalBlogPosts = () => (
-  <div>
-    {posts.map(({ title, url }) => (
-      <ExternalBlogPostItem title={title} url={url} />
-    ))}
-  </div>
-)
+const ExternalBlogPosts = () => {
+  const {
+    hasuraBlogPosts: { blog_posts: blogPosts },
+  } = useStaticQuery(graphql`
+    query BlogPostsQuery {
+      hasuraBlogPosts {
+        blog_posts {
+          id
+          title
+          url
+        }
+      }
+    }
+  `)
+
+  return (
+    <div className={css.postsListContainer}>
+      <h2>A collection of my favourite blog posts from other people</h2>
+      {blogPosts.map(({ title, url }) => (
+        <ExternalBlogPostItem title={title} url={url} />
+      ))}
+    </div>
+  )
+}
 
 export { ExternalBlogPosts }
