@@ -1,3 +1,7 @@
+require('dotenv').config({
+  path: `.env.${process.env.NODE_ENV}`,
+})
+
 module.exports = {
   siteMetadata: {
     title: `cpv`,
@@ -55,6 +59,17 @@ module.exports = {
         theme_color: `#663399`,
         display: `minimal-ui`,
         icon: `src/images/gatsby-icon.png`,
+      },
+    },
+    {
+      resolve: `gatsby-source-graphql`,
+      options: {
+        typeName: `BlogPosts`,
+        fieldName: `hasuraBlogPosts`,
+        url: `${process.env.GATSBY_HASURA_GRAPHQL_URL}`,
+        headers: {
+          Authorization: `Bearer ${process.env.GATSBY_HASURA_PUBLIC_ROLE_JWT}`,
+        },
       },
     },
   ],
