@@ -70,6 +70,12 @@ function CoffeeAddForm() {
       <div className={css.starRatingContainer}>
         <StarRating rating={shopDetails.rating} />
       </div>
+      <input
+        name="authorization"
+        value={shopDetails.authorization}
+        placeholder="Authorization"
+        onChange={handleInputChange}
+      />
       <div className={css.deployTriggerInput}>
         <span>Should trigger deploy</span>
         <input
@@ -79,14 +85,6 @@ function CoffeeAddForm() {
           onChange={handleTriggerDeployChange}
         />
       </div>
-      {shopDetails.shouldTriggerDeploy && (
-        <input
-          name="authorization"
-          value={shopDetails.authorization}
-          placeholder="Authorization"
-          onChange={handleInputChange}
-        />
-      )}
       <button onClick={handleSubmit}>Add shop</button>
       {fetchError && <div className={css.errorMessage}>Unable to add shop</div>}
     </div>
