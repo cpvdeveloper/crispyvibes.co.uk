@@ -16,6 +16,7 @@ function CoffeeAddForm() {
 
   const resetForm = () => {
     setShopDetails(initialForm)
+    setFetchError(false)
   }
 
   const handleInputChange = e => {
@@ -35,7 +36,7 @@ function CoffeeAddForm() {
 
   const handleSubmit = async () => {
     try {
-      await axios.post(process.env.GATSBY_COFFEE_SHOPS_URL, {
+      await axios.post(process.env.GATSBY_COFFEE_SHOPS_URL_OLD, {
         body: shopDetails,
       })
       resetForm()
