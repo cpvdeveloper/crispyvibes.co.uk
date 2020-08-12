@@ -9,11 +9,15 @@ function StarRating({ rating }) {
 
   if (lowerLimit > -1) {
     for (let i = 0; i < lowerLimit; i++) {
-      starsArray.push(<FontAwesomeIcon icon={faStar} size="xs" />)
+      starsArray.push(
+        <FontAwesomeIcon key={i.toString()} icon={faStar} size="xs" />
+      )
     }
 
     if (endsInHalf) {
-      starsArray.push(<FontAwesomeIcon icon={faStarHalf} size="xs" />)
+      starsArray.push(
+        <FontAwesomeIcon key="half" icon={faStarHalf} size="xs" />
+      )
     }
   }
 
