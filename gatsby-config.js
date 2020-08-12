@@ -19,7 +19,12 @@ module.exports = {
         plugins: [
           {
             resolve: `gatsby-remark-embed-gist`,
-            username: `cpv123`,
+            options: {
+              username: `cpv123`,
+              gistDefaultCssInclude: true,
+              includeDefaultCss: true,
+              gistCssPreload: true,
+            },
           },
           {
             resolve: `gatsby-remark-images`,
