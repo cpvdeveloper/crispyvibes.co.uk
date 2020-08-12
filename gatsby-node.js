@@ -69,7 +69,7 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
 }
 
 const getCoffeeShops = async () => {
-  const shops = await axios.get(process.env.GATSBY_COFFEE_SHOPS_URL)
+  const shops = await axios.get(`${process.env.GATSBY_COFFEE_SHOPS_URL}/shops`)
   return JSON.parse(shops.data.body).Items
 }
 

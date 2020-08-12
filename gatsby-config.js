@@ -13,22 +13,24 @@ module.exports = {
     },
   },
   plugins: [
-    `gatsby-plugin-react-helmet`,
-    `gatsby-transformer-sharp`,
-    `gatsby-plugin-sharp`,
     {
       resolve: `gatsby-transformer-remark`,
       options: {
         plugins: [
           {
+            resolve: `gatsby-remark-embed-gist`,
+            options: {
+              username: `cpv123`,
+              gistDefaultCssInclude: true,
+              includeDefaultCss: true,
+              gistCssPreload: true,
+            },
+          },
+          {
             resolve: `gatsby-remark-images`,
             options: {
               maxWidth: 590,
             },
-          },
-          {
-            resolve: `gatsby-remark-embed-gist`,
-            username: `cpv123`,
           },
           `gatsby-remark-copy-linked-files`,
           `gatsby-remark-smartypants`,
@@ -58,7 +60,7 @@ module.exports = {
         background_color: `#663399`,
         theme_color: `#663399`,
         display: `minimal-ui`,
-        icon: `src/images/gatsby-icon.png`,
+        icon: `src/images/favicon-32x32.png`,
       },
     },
     {
@@ -68,9 +70,13 @@ module.exports = {
         fieldName: `hasuraBlogPosts`,
         url: `${process.env.GATSBY_HASURA_GRAPHQL_URL}`,
         headers: {
-          Authorization: `Bearer ${process.env.GATSBY_HASURA_PUBLIC_ROLE_JWT}`,
+          'X-Hasura-Admin-Secret': process.env.GATSBY_HASURA_ADMIN_SECRET,
+          'Hasura-Client-Name': 'my-site',
         },
       },
     },
+    `gatsby-plugin-react-helmet`,
+    `gatsby-transformer-sharp`,
+    `gatsby-plugin-sharp`,
   ],
 }
