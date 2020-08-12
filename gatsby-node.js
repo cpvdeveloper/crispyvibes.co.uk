@@ -70,7 +70,7 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
 
 const getCoffeeShops = async () => {
   const shops = await axios.get(`${process.env.GATSBY_COFFEE_SHOPS_URL}/shops`)
-  return shops.data.Items
+  return JSON.parse(shops.data.body).Items
 }
 
 exports.onCreatePage = async ({ page, actions }) => {
