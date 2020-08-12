@@ -1,0 +1,15 @@
+.addForm {
+  display: flex;
+  flex-direction: column;
+  max-width: 400px;
+  padding: 40px;
+}
+
+.addForm > input,
+.addForm > textarea {
+  margin-bottom: 1rem;
+}
+
+.errorMessage {
+  color: red;
+}
