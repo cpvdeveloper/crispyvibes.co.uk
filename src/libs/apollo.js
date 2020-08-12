@@ -1,4 +1,5 @@
 import React from 'react'
+import fetch from 'cross-fetch'
 import {
   ApolloProvider as Provider,
   ApolloClient,
@@ -11,7 +12,10 @@ import {
 const CLIENT_URI = process.env.GATSBY_HASURA_GRAPHQL_URL
 const HASURA_ADMIN = process.env.GATSBY_HASURA_ADMIN_SECRET
 
-const httpLink = new HttpLink({ uri: CLIENT_URI })
+const httpLink = new HttpLink({
+  uri: CLIENT_URI,
+  fetch,
+})
 
 const authMiddleware = new ApolloLink((operation, forward) => {
   operation.setContext(({ headers = {} }) => ({
