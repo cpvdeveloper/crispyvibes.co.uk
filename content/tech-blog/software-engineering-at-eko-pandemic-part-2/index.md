@@ -12,8 +12,8 @@ More lessons learned during a busy few months.
 
 Part II in the [series](https://medium.com/@cp.vibert/software-engineering-at-eko-pandemic-edition-part-i-75b8f4f578e6).
 
-> During the few months that I stood at my desk in the kitchen, I worked on 3 projects all with very different tech stacks. I wrote some good code and I wrote some bad code. I lost what feels like years of sleep, but more importantly, I gained what feels like years of experience.
-> I want to share some of these experiences and pass on some useful tips that I picked up along the way.
+> _During the few months that I stood at my desk in the kitchen, I worked on 3 projects all with very different tech stacks. I wrote some good code and I wrote some bad code. I lost what feels like years of sleep, but more importantly, I gained what feels like years of experience.
+> I want to share some of these experiences and pass on some useful tips that I picked up along the way._
 
 ## Build your own translation service
 
