@@ -22,14 +22,14 @@ const TechBlogPage = ({ location, data }) => {
       <Toggle toggleValue={isShowingMine} onToggle={handleToggle} />
       {isShowingMine ? (
         <>
-          <Bio bioLink={medium} bioText="Tech blog" />
+          <Bio bioLink={medium} bioText="Tech blog" authorLink="@cp.vibert" />
           {posts.map(({ node }) => {
             const title = node.frontmatter.title || node.fields.slug
             return (
               <div key={node.fields.slug} style={{ marginBottom: '3rem' }}>
                 <header>
                   <h3 style={{ marginBottom: '0.5rem' }}>
-                    <Link style={{ boxShadow: `none` }} to={node.fields.slug}>
+                    <Link style={{ boxShadow: 'none' }} to={node.fields.slug}>
                       {title}
                     </Link>
                   </h3>
