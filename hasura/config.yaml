@@ -1,5 +1,5 @@
 version: 2
-endpoint: https://resolved-sponge-89.hasura.app
+endpoint: https://relevant-tomcat-48.hasura.app
 metadata_directory: metadata
 actions:
   kind: synchronous
