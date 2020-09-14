@@ -66,8 +66,8 @@ module.exports = {
     {
       resolve: `gatsby-source-graphql`,
       options: {
-        typeName: `BlogPosts`,
-        fieldName: `hasuraBlogPosts`,
+        typeName: `HasuraData`,
+        fieldName: `hasuraData`,
         url: `${process.env.GATSBY_HASURA_GRAPHQL_URL}`,
         headers: {
           'X-Hasura-Admin-Secret': process.env.GATSBY_HASURA_ADMIN_SECRET,

@@ -5,10 +5,10 @@ import css from './ExternalBlogPosts.module.css'
 
 const ExternalBlogPosts = () => {
   const {
-    hasuraBlogPosts: { blog_posts: blogPosts },
+    hasuraData: { blog_posts: blogPosts },
   } = useStaticQuery(graphql`
     query BlogPostsQuery {
-      hasuraBlogPosts {
+      hasuraData {
         blog_posts {
           id
           title
