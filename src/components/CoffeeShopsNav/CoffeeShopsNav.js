@@ -20,7 +20,7 @@ function CoffeeShopsNav({
           placeholder="Search"
           onChange={e => onSearch(e.target.value)}
         />
-        <button onClick={onSortByRating}>
+        <button onClick={onSortByRating} className={css.ratingSortButton}>
           Sort by rating <FontAwesomeIcon icon={faStar} size="xs" />
         </button>
       </div>
