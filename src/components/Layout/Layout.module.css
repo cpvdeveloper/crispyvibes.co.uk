@@ -1,0 +1,15 @@
+.content {
+  padding: 6rem 2rem;
+}
+
+@media (max-width: 440px) {
+  .content {
+    padding-left: 0.85rem;
+    padding-right: 0.85rem;
+  }
+}
+
+.main {
+  max-width: 640px;
+  margin: 0 auto;
+}
