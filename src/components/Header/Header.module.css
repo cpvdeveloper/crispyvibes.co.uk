@@ -1,11 +1,13 @@
 .header {
-  background: none;
-  margin-bottom: 2rem;
-  margin-top: 0.5rem;
-  height: 2.5rem;
+  position: fixed;
+  top: 0;
   width: 100%;
-  overflow-y: hidden;
-  overflow-x: scroll;
+  z-index: 10;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  background: #fff;
+  display: flex;
+  justify-content: center;
 }
 
 .nav {
@@ -13,4 +15,26 @@
   height: 100%;
   align-items: center;
   min-width: 700px;
+}
+
+.link {
+  border-radius: 4px;
+  padding: 0.25rem 0.5rem;
+  font-size: 1rem;
+  font-weight: 500;
+  color: rgb(115, 115, 115);
+  text-decoration: none;
+  width: 150px;
+  text-align: center;
+  margin-right: 0.5rem;
+}
+
+.link:hover {
+  background: rgba(5, 5, 5, 0.05);
+  color: #000;
+}
+
+.activeLink {
+  background: rgba(5, 5, 5, 0.05);
+  color: #000;
 }
