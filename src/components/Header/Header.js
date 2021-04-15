@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import css from './Header.module.css'
 
 const navItems = [
-  { title: 'Tech Blog', pathname: '/tech-blog' },
+  { title: 'Writing', pathname: '/writing' },
   { title: 'Coffee', pathname: '/coffee' },
 ]
 
