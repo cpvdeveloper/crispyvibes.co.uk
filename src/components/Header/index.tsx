@@ -1,12 +1,19 @@
-import React from 'react'
+import React, { useMemo } from 'react'
 import { PageProps } from 'gatsby'
-import { Link } from 'gatsby'
-import classnames from 'classnames'
-import css from './Header.module.css'
+import DesktopHeader from './Desktop'
+import MobileHeader from './Mobile'
 
-const navItems = [
-  { title: 'Writing', pathname: '/writing' },
-  { title: 'Coffee', pathname: '/coffee' },
+export interface NavItem {
+  title: string
+  pathname: string
+  emoji: string
+}
+
+const navItems: Array<NavItem> = [
+  { title: 'Home', pathname: '/', emoji: '🏡' },
+  { title: 'Writing', pathname: '/writing', emoji: '📝' },
+  { title: 'Projects', pathname: '/projects', emoji: '👨🏼‍💻' },
+  { title: 'Coffee', pathname: '/coffee', emoji: '☕' },
 ]
 
 type Props = {
@@ -14,6 +21,16 @@ type Props = {
 }
 
 export default function Header({ location }: Props) {
+  const currentPathTitle = useMemo(() => {
+    if (location.pathname === '/') return 'Home'
+    const currentNavItem = navItems
+      .filter(({ pathname }) => pathname !== '/')
+      .find(({ pathname }) => {
+        return location.pathname.includes(pathname)
+      })
+    return currentNavItem?.title
+  }, [location])
+
   const isLinkActive = (pathname: string) => {
     return (
       location.pathname === pathname || location.pathname === `${pathname}/`
@@ -21,19 +38,9 @@ export default function Header({ location }: Props) {
   }
 
   return (
-    <header className={css.header}>
-      <nav className={css.nav}>
-        {navItems.map(({ pathname, title }) => {
-          const linkTextClass = classnames(css.link, {
-            [css.activeLink]: isLinkActive(pathname),
-          })
-          return (
-            <Link key={pathname} to={pathname} className={linkTextClass}>
-              {title}
-            </Link>
-          )
-        })}
-      </nav>
-    </header>
+    <>
+      <DesktopHeader navItems={navItems} isLinkActive={isLinkActive} />
+      <MobileHeader navItems={navItems} currentPathTitle={currentPathTitle} />
+    </>
   )
 }

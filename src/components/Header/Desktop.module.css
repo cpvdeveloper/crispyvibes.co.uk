@@ -1,13 +1,18 @@
-.header {
+.desktopHeader {
   position: fixed;
   top: 0;
-  width: 100%;
   z-index: 10;
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
+  padding: 0.5rem 2rem;
   background: #fff;
   display: flex;
   justify-content: center;
+  width: 100%;
+}
+
+@media (max-width: 660px) {
+  .desktopHeader {
+    display: none;
+  }
 }
 
 .nav {
@@ -22,7 +27,7 @@
   padding: 0.25rem 0.5rem;
   font-size: 1rem;
   font-weight: 500;
-  color: rgb(115, 115, 115);
+  color: var(--neutral-dark);
   text-decoration: none;
   width: 150px;
   text-align: center;
@@ -30,11 +35,15 @@
 }
 
 .link:hover {
-  background: rgba(5, 5, 5, 0.05);
+  background: var(--neutral-light);
   color: #000;
 }
 
 .activeLink {
-  background: rgba(5, 5, 5, 0.05);
+  background: var(--neutral-light);
   color: #000;
+}
+
+.linkEmoji {
+  margin-right: 0.25rem;
 }
