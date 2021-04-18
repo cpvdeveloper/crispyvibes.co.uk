@@ -23,7 +23,7 @@ function CoffeePage({ location, pageContext }: Props) {
   const [areShopsFiltered, setAreShopsFiltered] = useState(false)
   const [locationFilter, setLocationFilter] = useState('')
   const [searchFilter, setSearchFilter] = useState('')
-  const [sortByRating, setSortByRating] = useState(null)
+  const [sortByRating, setSortByRating] = useState<1 | -1 | null>(null)
 
   const locations = useMemo(() => {
     if (!shops.length) return []
@@ -93,13 +93,14 @@ function CoffeePage({ location, pageContext }: Props) {
 
   const renderShopsList = () => (
     <>
-      <h1>{shopsToRender.length} pretty good coffee shops</h1>
       <CoffeeShopsNav
         locations={locationsToRender}
         selectedLocation={locationFilter}
         onSearch={handleSearch}
         onClickLocation={handleClickLocation}
         onSortByRating={handleSortByRating}
+        shopsCount={shopsToRender.length}
+        sort={sortByRating}
       />
       {shopsToRender.map(shop => (
         <CoffeeShop key={shop.name} shop={shop} />

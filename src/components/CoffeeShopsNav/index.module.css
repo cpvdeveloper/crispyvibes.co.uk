@@ -1,0 +1,88 @@
+.filterBar {
+  display: flex;
+}
+
+.search {
+  margin-bottom: 1.5rem;
+  padding-left: 0.5rem;
+  margin-right: 0.5rem;
+  border-radius: 4px;
+  border: 1px solid;
+  border-color: var(--neutral-dark);
+  width: 250px;
+}
+
+@media only screen and (max-width: 440px) {
+  .search {
+    width: 225px;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .list {
+    flex-wrap: wrap;
+    overflow-x: scroll;
+    max-height: 40px;
+    flex-direction: column;
+    overflow-y: hidden;
+  }
+}
+
+.list {
+  display: flex;
+  margin-left: 0;
+  flex-wrap: wrap;
+}
+
+.listItem {
+  list-style: none;
+  margin-right: 0.5rem;
+}
+
+.item {
+  border: 1px solid;
+  border-color: var(--neutral-dark);
+  color: var(--neutral-dark);
+  cursor: pointer;
+  background: none;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.item:hover {
+  color: #000;
+}
+
+.item.selectedItem {
+  color: #000;
+  border-color: #000;
+}
+
+.sortButton {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  text-decoration: none;
+  color: var(--neutral-dark);
+  font-weight: 500;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.sortButton:hover {
+  color: #000;
+}
+
+.sortButton > * {
+  margin-right: 0.2rem;
+}
+
+.heading {
+  font-weight: 500;
+}
+
+.heading > span {
+  font-weight: 600;
+}
