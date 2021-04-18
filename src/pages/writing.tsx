@@ -1,11 +1,35 @@
 import React from 'react'
-import { graphql } from 'gatsby'
+import { graphql, PageProps } from 'gatsby'
 import PostSummary from '../components/PostSummary'
 import Layout from '../components/Layout'
 import SEO from '../components/SEO'
 
-export default function TechBlogPage({ location, data }) {
-  const posts = data.allMarkdownRemark.edges
+interface PageQueryData {
+  allMarkdownRemark: {
+    edges: Array<{
+      node: {
+        excerpt: string
+        fields: {
+          slug: string
+        }
+        frontmatter: {
+          date: string
+          title: string
+          description: string
+          length: number
+        }
+      }
+    }>
+  }
+}
+
+type Props = {
+  location: PageProps['location']
+  data: PageQueryData
+}
+
+export default function TechBlogPage({ location, data }: Props) {
+  const { edges: posts } = data.allMarkdownRemark
 
   return (
     <Layout location={location}>
