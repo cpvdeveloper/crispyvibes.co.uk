@@ -6,16 +6,9 @@ require('dotenv').config({
 })
 
 exports.createPages = async ({ graphql, actions }) => {
-  const { createPage, createRedirect } = actions
+  const { createPage } = actions
 
-  createRedirect({
-    fromPath: `/`,
-    toPath: `/writing`,
-    isPermanent: `true`,
-    redirectInBrowser: true,
-  })
-
-  const blogPost = path.resolve(`./src/templates/blog-post.js`)
+  const blogPost = path.resolve(`./src/templates/BlogPost/index.tsx`)
   const result = await graphql(
     `
       {
@@ -46,7 +39,7 @@ exports.createPages = async ({ graphql, actions }) => {
 
   posts.forEach(post => {
     createPage({
-      path: post.node.fields.slug,
+      path: `writing${post.node.fields.slug}`,
       component: blogPost,
       context: {
         slug: post.node.fields.slug,

@@ -19,7 +19,7 @@ export default function PostSummary({
 }: Props) {
   return (
     <div className={css.root}>
-      <Link to={link} className={css.title}>
+      <Link to={`/writing${link}`} className={css.title}>
         {name}
       </Link>
       <p className={css.excerpt}>{excerpt}</p>
