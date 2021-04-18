@@ -10,15 +10,15 @@
 }
 
 .title:hover {
-  background: rgba(251, 191, 36, 0.3);
+  background: #80d2ac33;
 }
 
 .excerpt {
   margin: 0;
-  color: rgb(115, 115, 115);
+  color: var(--neutral-dark);
 }
 
 .info {
   display: block;
-  color: rgb(163, 163, 163);
+  color: var(--neutral);
 }

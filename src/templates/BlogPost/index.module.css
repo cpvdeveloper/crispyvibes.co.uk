@@ -1,0 +1,11 @@
+.backArrow {
+  display: block;
+  margin-bottom: 1.5rem;
+  text-decoration: none;
+  color: var(--neutral-dark);
+  font-weight: 500;
+}
+
+.backArrow:hover {
+  color: #000;
+}
