@@ -1,0 +1,49 @@
+.desktopHeader {
+  position: fixed;
+  top: 0;
+  z-index: 10;
+  padding: 0.5rem 2rem;
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+@media (max-width: 660px) {
+  .desktopHeader {
+    display: none;
+  }
+}
+
+.nav {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  min-width: 700px;
+}
+
+.link {
+  border-radius: 4px;
+  padding: 0.25rem 0.5rem;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--neutral-dark);
+  text-decoration: none;
+  width: 150px;
+  text-align: center;
+  margin-right: 0.5rem;
+}
+
+.link:hover {
+  background: var(--neutral-light);
+  color: #000;
+}
+
+.activeLink {
+  background: var(--neutral-light);
+  color: #000;
+}
+
+.linkEmoji {
+  margin-right: 0.25rem;
+}
