@@ -2,7 +2,7 @@ import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faStar, faStarHalf } from '@fortawesome/free-solid-svg-icons'
 
-function StarRating({ rating }) {
+export default function StarRating({ rating }: { rating: number }) {
   const lowerLimit = rating ? Math.floor(rating) : -1
   const endsInHalf = lowerLimit > -1 && lowerLimit < rating
   const starsArray = []
@@ -21,7 +21,5 @@ function StarRating({ rating }) {
     }
   }
 
-  return starsArray
+  return <>{starsArray}</>
 }
-
-export { StarRating }

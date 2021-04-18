@@ -1,9 +1,16 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import StarRating from '../StarRating'
 import css from './CoffeeShop.module.css'
 
-function CoffeeShop({ shop }) {
+type Props = {
+  shop: {
+    name: string
+    location: string
+    rating: number
+  }
+}
+
+export default function CoffeeShop({ shop }: Props) {
   return (
     <h4 className={css.coffeeShopHeader}>
       <span className={css.shopNameLocation}>
@@ -16,12 +23,3 @@ function CoffeeShop({ shop }) {
     </h4>
   )
 }
-
-CoffeeShop.propTypes = {
-  shop: PropTypes.shape({
-    name: PropTypes.string,
-    location: PropTypes.string,
-  }).isRequired,
-}
-
-export { CoffeeShop }
