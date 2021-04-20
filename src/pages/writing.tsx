@@ -49,22 +49,28 @@ export default function TechBlogPage({ location, data }: Props) {
   )
 }
 
+export const postsQueryFragment = graphql`
+  fragment PostSummaryFragment on MarkdownRemarkEdge {
+    node {
+      excerpt
+      fields {
+        slug
+      }
+      frontmatter {
+        date
+        title
+        description
+        length
+      }
+    }
+  }
+`
+
 export const pageQuery = graphql`
   query {
     allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
       edges {
-        node {
-          excerpt
-          fields {
-            slug
-          }
-          frontmatter {
-            date(formatString: "MMMM DD, YYYY")
-            title
-            description
-            length
-          }
-        }
+        ...PostSummaryFragment
       }
     }
   }

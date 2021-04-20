@@ -1,4 +1,4 @@
-.backArrow {
+.arrow {
   display: block;
   margin-bottom: 1.5rem;
   text-decoration: none;
@@ -6,6 +6,6 @@
   font-weight: 500;
 }
 
-.backArrow:hover {
+.arrow:hover {
   color: #000;
 }

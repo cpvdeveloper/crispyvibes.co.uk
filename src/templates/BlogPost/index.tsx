@@ -2,7 +2,7 @@ import React from 'react'
 import { graphql, Link, PageProps } from 'gatsby'
 import Layout from '../../components/Layout'
 import SEO from '../../components/SEO'
-import css from './index.module.css'
+import ArrowLink from '../../components/ArrowLink'
 
 interface BlogPostQueryData {
   markdownRemark: {
@@ -30,9 +30,9 @@ function BlogPostTemplate({ location, data }: Props) {
   return (
     <Layout location={location}>
       <SEO title={title} description={description || excerpt} />
-      <Link className={css.backArrow} to="/writing">
-        &larr; Writing
-      </Link>
+      <ArrowLink linkTo="/writing" direction="left">
+        Writing
+      </ArrowLink>
       <article>
         <header>
           <h1>{title}</h1>
