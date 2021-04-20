@@ -66,8 +66,16 @@ const getCoffeeShops = async () => {
   return JSON.parse(shops.data.body).Items
 }
 
+const pageNeedsCoffee = path => {
+  const PAGES = ['/coffee', '/coffee/', '/']
+  if (PAGES.includes(path)) {
+    return true
+  }
+  return false
+}
+
 exports.onCreatePage = async ({ page, actions }) => {
-  if (page.path === '/coffee' || page.path === '/coffee/') {
+  if (pageNeedsCoffee(page.path)) {
     const { createPage, deletePage } = actions
     deletePage(page)
 

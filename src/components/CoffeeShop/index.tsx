@@ -1,4 +1,5 @@
 import React from 'react'
+import classnames from 'classnames'
 import StarRating from '../StarRating'
 import css from './CoffeeShop.module.css'
 
@@ -8,11 +9,16 @@ type Props = {
     location: string
     rating: number
   }
+  compact?: boolean
 }
 
-export default function CoffeeShop({ shop }: Props) {
+export default function CoffeeShop({ shop, compact = false }: Props) {
   return (
-    <h4 className={css.coffeeShopHeader}>
+    <h4
+      className={classnames(css.coffeeShopHeader, {
+        [css.compact]: compact,
+      })}
+    >
       <span className={css.shopNameLocation}>
         {shop.name} • <small>{shop.location}</small>
       </span>

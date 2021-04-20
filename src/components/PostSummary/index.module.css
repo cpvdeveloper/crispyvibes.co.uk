@@ -22,3 +22,15 @@
   display: block;
   color: var(--neutral);
 }
+
+.compact {
+  margin-bottom: 0.75rem;
+}
+
+.compact > a {
+  font-size: 1rem;
+}
+
+.compact > p {
+  font-size: 0.85rem;
+}
