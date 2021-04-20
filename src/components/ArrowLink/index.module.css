@@ -1,6 +1,5 @@
 .arrow {
   display: block;
-  margin-bottom: 1.5rem;
   text-decoration: none;
   color: var(--neutral-dark);
   font-weight: 500;
@@ -8,4 +7,8 @@
 
 .arrow:hover {
   color: #000;
+}
+
+.gutterBottom {
+  margin-bottom: 1.5rem;
 }

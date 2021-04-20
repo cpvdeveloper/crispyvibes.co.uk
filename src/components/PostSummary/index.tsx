@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'gatsby'
+import classnames from 'classnames'
 import css from './index.module.css'
 
 type Props = {
@@ -8,6 +9,7 @@ type Props = {
   excerpt: string
   date: string
   readTime: number
+  compact?: boolean
 }
 
 export default function PostSummary({
@@ -16,9 +18,14 @@ export default function PostSummary({
   excerpt,
   date,
   readTime,
+  compact = false,
 }: Props) {
   return (
-    <div className={css.root}>
+    <div
+      className={classnames(css.root, {
+        [css.compact]: compact,
+      })}
+    >
       <Link to={`/writing${link}`} className={css.title}>
         {name}
       </Link>

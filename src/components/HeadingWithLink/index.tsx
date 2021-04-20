@@ -11,7 +11,7 @@ type Props = {
 export default function HeadingWithLink({ heading, linkTo, linkText }: Props) {
   return (
     <div className={css.root}>
-      <h3>{heading}</h3>
+      <h3 className={css.heading}>{heading}</h3>
       <ArrowLink linkTo={linkTo} direction="right">
         {linkText}
       </ArrowLink>

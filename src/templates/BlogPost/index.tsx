@@ -30,7 +30,7 @@ function BlogPostTemplate({ location, data }: Props) {
   return (
     <Layout location={location}>
       <SEO title={title} description={description || excerpt} />
-      <ArrowLink linkTo="/writing" direction="left">
+      <ArrowLink linkTo="/writing" direction="left" gutterBottom>
         Writing
       </ArrowLink>
       <article>
