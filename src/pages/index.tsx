@@ -44,7 +44,7 @@ export default function HomePage({ location, data, pageContext }: Props) {
   const { edges: topThreePosts } = data.allMarkdownRemark
   const recentCoffee = pageContext.coffeeShops
     .filter(shop => shop.location === 'Bangkok')
-    .slice(3)
+    .slice(0, 3)
   return (
     <Layout location={location}>
       <SEO title="Home" />
