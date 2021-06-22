@@ -36,8 +36,9 @@ function CoffeeAddForm() {
 
   const handleSubmit = async () => {
     try {
-      await axios.post(process.env.GATSBY_COFFEE_SHOPS_URL_OLD, {
-        body: shopDetails,
+      await axios.post(process.env.GATSBY_COFFEE_SHOPS_URL, {
+        ...shopDetails,
+        rating: parseFloat(shopDetails.rating),
       })
       resetForm()
     } catch (err) {

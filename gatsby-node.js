@@ -62,8 +62,9 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
 }
 
 const getCoffeeShops = async () => {
-  const shops = await axios.get(`${process.env.GATSBY_COFFEE_SHOPS_URL}/shops`)
-  return JSON.parse(shops.data.body).Items
+  const { data } = await axios.get(process.env.GATSBY_COFFEE_SHOPS_URL)
+  const shops = JSON.parse(data.body).Items
+  return shops.sort((a, b) => b.createdAt - a.createdAt)
 }
 
 const pageNeedsCoffee = path => {
