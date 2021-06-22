@@ -12,7 +12,6 @@ export interface NavItem {
 const navItems: Array<NavItem> = [
   { title: 'Home', pathname: '/', emoji: '🏡' },
   { title: 'Writing', pathname: '/writing', emoji: '📝' },
-  { title: 'Projects', pathname: '/projects', emoji: '👨🏼‍💻' },
   { title: 'Coffee', pathname: '/coffee', emoji: '☕' },
 ]
 
