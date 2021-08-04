@@ -1,6 +1,0 @@
-- table:
-    schema: public
-    name: blog_posts
-- table:
-    schema: public
-    name: extensions

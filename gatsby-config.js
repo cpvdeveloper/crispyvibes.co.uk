@@ -63,18 +63,6 @@ module.exports = {
         icon: `src/images/favicon-32x32.png`,
       },
     },
-    {
-      resolve: `gatsby-source-graphql`,
-      options: {
-        typeName: `HasuraData`,
-        fieldName: `hasuraData`,
-        url: `${process.env.GATSBY_HASURA_GRAPHQL_URL}`,
-        headers: {
-          'X-Hasura-Admin-Secret': process.env.GATSBY_HASURA_ADMIN_SECRET,
-          'Hasura-Client-Name': 'my-site',
-        },
-      },
-    },
     `gatsby-plugin-react-helmet`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
