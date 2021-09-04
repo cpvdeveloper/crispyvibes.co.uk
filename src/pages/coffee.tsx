@@ -1,6 +1,5 @@
 import React, { useState, useMemo } from 'react'
 import { PageProps } from 'gatsby'
-import SEO from '../components/SEO'
 import Layout from '../components/Layout'
 import CoffeeShop from '../components/CoffeeShop'
 import CoffeeShopsNav from '../components/CoffeeShopsNav'
@@ -109,8 +108,13 @@ function CoffeePage({ location, pageContext }: Props) {
   )
 
   return (
-    <Layout location={location}>
-      <SEO title="Coffee" description="List of coffee shops" />
+    <Layout
+      location={location}
+      meta={{
+        description:
+          'A list of (laptop-friendly) coffee shops around the world.',
+      }}
+    >
       {renderShopsList()}
     </Layout>
   )

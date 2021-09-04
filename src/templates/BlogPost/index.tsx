@@ -1,7 +1,6 @@
 import React from 'react'
-import { graphql, Link, PageProps } from 'gatsby'
+import { graphql, PageProps } from 'gatsby'
 import Layout from '../../components/Layout'
-import SEO from '../../components/SEO'
 import ArrowLink from '../../components/ArrowLink'
 
 interface BlogPostQueryData {
@@ -28,8 +27,10 @@ function BlogPostTemplate({ location, data }: Props) {
   const { title, description, date, length, link } = frontmatter
 
   return (
-    <Layout location={location}>
-      <SEO title={title} description={description || excerpt} />
+    <Layout
+      location={location}
+      meta={{ title, description: description || excerpt }}
+    >
       <ArrowLink linkTo="/writing" direction="left" gutterBottom>
         Writing
       </ArrowLink>

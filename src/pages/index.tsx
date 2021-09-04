@@ -1,7 +1,6 @@
 import React from 'react'
 import { PageProps, graphql } from 'gatsby'
 import Layout from '../components/Layout'
-import SEO from '../components/SEO'
 import HeadingWithLink from '../components/HeadingWithLink'
 import PostSummary from '../components/PostSummary'
 import CoffeeShop from '../components/CoffeeShop'
@@ -45,7 +44,6 @@ export default function HomePage({ location, data, pageContext }: Props) {
   const recentCoffee = pageContext.coffeeShops.slice(0, 3)
   return (
     <Layout location={location}>
-      <SEO title="Home" />
       <h1>Hey, I'm Chris</h1>
       <p style={{ marginBottom: '3rem', fontWeight: 600 }}>
         Coffee recommendations and some thoughts on software development.

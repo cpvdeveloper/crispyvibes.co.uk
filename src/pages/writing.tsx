@@ -2,7 +2,6 @@ import React from 'react'
 import { graphql, PageProps } from 'gatsby'
 import PostSummary from '../components/PostSummary'
 import Layout from '../components/Layout'
-import SEO from '../components/SEO'
 
 interface PageQueryData {
   allMarkdownRemark: {
@@ -32,8 +31,13 @@ export default function TechBlogPage({ location, data }: Props) {
   const { edges: posts } = data.allMarkdownRemark
 
   return (
-    <Layout location={location}>
-      <SEO title="Tech blog" />
+    <Layout
+      location={location}
+      meta={{
+        description:
+          'Blog posts on web development. React, Next.js, GraphQL, AWS.',
+      }}
+    >
       {posts.map(({ node: { frontmatter, fields } }) => {
         return (
           <PostSummary
