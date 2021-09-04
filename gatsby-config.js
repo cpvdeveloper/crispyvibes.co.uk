@@ -63,6 +63,12 @@ module.exports = {
         icon: `src/images/favicon-32x32.png`,
       },
     },
+    {
+      resolve: `gatsby-plugin-plausible`,
+      options: {
+        domain: `crispyvibes.co.uk`,
+      },
+    },
     `gatsby-plugin-react-helmet`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,

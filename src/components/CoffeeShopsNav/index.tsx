@@ -22,7 +22,6 @@ export default function CoffeeShopsNav({
   shopsCount,
   sort,
 }: Props) {
-  console.log('sort', sort)
   const renderSortIcon = () => {
     if (sort === null) return null
     return sort === 1 ? <ArrowUp size={18} /> : <ArrowDown size={18} />
