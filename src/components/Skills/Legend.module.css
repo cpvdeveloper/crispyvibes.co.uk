@@ -1,0 +1,29 @@
+.container {
+  border: 1px solid var(--neutral-light);
+  border-radius: 6px;
+  padding: 0.5rem;
+  width: fit-content;
+  margin-top: 1.5rem;
+}
+
+@media only screen and (max-width: 480px) {
+  .container {
+    width: 100%;
+  }
+}
+
+.keyWithValue {
+  display: flex;
+  align-items: center;
+  padding: 0.1rem;
+}
+
+.description {
+  font-size: 14px;
+}
+
+.colorKey {
+  width: 30px;
+  height: 4px;
+  margin-right: 0.5rem;
+}

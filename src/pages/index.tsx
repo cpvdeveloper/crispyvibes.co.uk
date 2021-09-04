@@ -1,6 +1,8 @@
 import React from 'react'
 import { PageProps, graphql } from 'gatsby'
 import Layout from '../components/Layout'
+import Skills from '../components/Skills'
+import Intro from '../components/Intro'
 import HeadingWithLink from '../components/HeadingWithLink'
 import PostSummary from '../components/PostSummary'
 import CoffeeShop from '../components/CoffeeShop'
@@ -44,12 +46,14 @@ export default function HomePage({ location, data, pageContext }: Props) {
   const recentCoffee = pageContext.coffeeShops.slice(0, 3)
   return (
     <Layout location={location}>
-      <h1>Hey, I'm Chris</h1>
-      <p style={{ marginBottom: '3rem', fontWeight: 600 }}>
-        Coffee recommendations and some thoughts on software development.
-      </p>
+      <Intro />
+      <div style={{ marginBottom: '2rem' }}>
+        <HeadingWithLink heading="Things I can do" hideLink />
+        <Skills />
+      </div>
       <div style={{ marginBottom: '2rem' }}>
         <HeadingWithLink
+          id="coffee-summary"
           heading="Recent coffee"
           linkTo="/coffee"
           linkText="View all"
@@ -59,6 +63,7 @@ export default function HomePage({ location, data, pageContext }: Props) {
         ))}
       </div>
       <HeadingWithLink
+        id="blog-summary"
         heading="Recent thoughts"
         linkTo="/writing"
         linkText="View all"

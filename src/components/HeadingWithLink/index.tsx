@@ -4,17 +4,27 @@ import css from './index.module.css'
 
 type Props = {
   heading: ReactNode
-  linkTo: string
-  linkText: ReactNode
+  linkTo?: string
+  linkText?: ReactNode
+  id?: string
+  hideLink?: boolean
 }
 
-export default function HeadingWithLink({ heading, linkTo, linkText }: Props) {
+export default function HeadingWithLink({
+  heading,
+  linkTo,
+  linkText,
+  id,
+  hideLink = false,
+}: Props) {
   return (
-    <div className={css.root}>
+    <div className={css.root} id={id}>
       <h3 className={css.heading}>{heading}</h3>
-      <ArrowLink linkTo={linkTo} direction="right">
-        {linkText}
-      </ArrowLink>
+      {!hideLink && (
+        <ArrowLink linkTo={linkTo} direction="right">
+          {linkText}
+        </ArrowLink>
+      )}
     </div>
   )
 }
