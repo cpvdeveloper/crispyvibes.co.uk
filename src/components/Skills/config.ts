@@ -28,11 +28,23 @@ export const SKILLS_CONFIG: Array<Skill> = [
     level: 'expert',
   },
   {
+    name: 'Hasura',
+    level: 'expert',
+  },
+  {
+    name: 'Pulumi',
+    level: 'expert',
+  },
+  {
     name: 'Serverless Applications on AWS',
     level: 'expert',
   },
   {
     name: 'PostgreSQL',
+    level: 'ok',
+  },
+  {
+    name: 'Mint Lang',
     level: 'ok',
   },
   {
