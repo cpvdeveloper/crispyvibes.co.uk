@@ -1,0 +1,17 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  max-width: 300px;
+}
+
+.root > * {
+  margin-bottom: 1.5rem;
+}
+
+.checkbox {
+  margin-right: 0.5rem;
+}
+
+.submitButton {
+  cursor: pointer;
+}

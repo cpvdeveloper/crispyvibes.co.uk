@@ -1,0 +1,10 @@
+rescript = 1
+rule cp
+  command = cp $i $out
+rule touch
+ command = touch $out
+o CoffeeAddForm.cmi : cp ../bs/src/rescript/CoffeeAddForm/CoffeeAddForm.cmi
+o CoffeeAddForm.cmj : cp ../bs/src/rescript/CoffeeAddForm/CoffeeAddForm.cmj
+o CoffeeAddForm.cmt : cp ../bs/src/rescript/CoffeeAddForm/CoffeeAddForm.cmt
+o CoffeeAddForm.res : cp ../../src/rescript/CoffeeAddForm/CoffeeAddForm.res
+build install.stamp : touch CoffeeAddForm.cmi CoffeeAddForm.cmj 

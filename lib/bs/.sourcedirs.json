@@ -1,0 +1,10 @@
+{
+  "dirs": ["src/rescript", "src/rescript/CoffeeAddForm"],
+  "pkgs": [
+    [
+      "@rescript/react",
+      "/Users/chris/code/crispyvibes.co.uk/node_modules/@rescript/react"
+    ]
+  ],
+  "generated": []
+}

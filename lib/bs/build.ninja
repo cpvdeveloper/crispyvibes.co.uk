@@ -1,0 +1,14 @@
+rescript = 1
+g_finger := /Users/chris/code/crispyvibes.co.uk/node_modules/@rescript/react/lib/ocaml/install.stamp
+rule astj
+  command = /Users/chris/code/crispyvibes.co.uk/node_modules/rescript/darwin/bsc.exe  -bs-v 9.1.4 -bs-jsx 3  -absname -bs-ast -o $out $i
+o src/rescript/CoffeeAddForm/CoffeeAddForm.ast : astj ../../src/rescript/CoffeeAddForm/CoffeeAddForm.res
+rule deps
+  command = /Users/chris/code/crispyvibes.co.uk/node_modules/rescript/darwin/bsb_helper.exe -hash c50ec2d0f15325636c3710032644395f $in
+  restat = 1
+o src/rescript/CoffeeAddForm/CoffeeAddForm.d : deps src/rescript/CoffeeAddForm/CoffeeAddForm.ast
+rule mij
+  command = /Users/chris/code/crispyvibes.co.uk/node_modules/rescript/darwin/bsc.exe -I src/rescript/CoffeeAddForm -I src/rescript -I /Users/chris/code/crispyvibes.co.uk/node_modules/@rescript/react/lib/ocaml   -bs-package-name personal-siite -bs-package-output es6:$in_d:.bs.js -bs-v $g_finger $i
+  dyndep = 1
+  restat = 1
+o src/rescript/CoffeeAddForm/CoffeeAddForm.cmj src/rescript/CoffeeAddForm/CoffeeAddForm.cmi ../../src/rescript/CoffeeAddForm/CoffeeAddForm.bs.js : mij src/rescript/CoffeeAddForm/CoffeeAddForm.ast
