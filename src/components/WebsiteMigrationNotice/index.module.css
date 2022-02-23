@@ -1,0 +1,30 @@
+.container {
+  border: 2px #b31d28 dashed;
+  border-radius: 8px;
+  padding: 0.75rem;
+  margin-bottom: 2.5rem;
+}
+
+.container > p,
+.container li {
+  font-size: 14px;
+}
+
+.heading {
+  font-size: 20px;
+  font-weight: 500;
+  margin-bottom: 0.75rem;
+}
+
+.subheading {
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+ul {
+  margin-bottom: 0.5rem;
+}
+
+li {
+  margin-bottom: 0.25rem;
+}
