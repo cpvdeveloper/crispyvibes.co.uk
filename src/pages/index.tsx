@@ -6,6 +6,7 @@ import Intro from '../components/Intro'
 import HeadingWithLink from '../components/HeadingWithLink'
 import PostSummary from '../components/PostSummary'
 import CoffeeShop from '../components/CoffeeShop'
+import { WebsiteMigrationNotice } from '../components/WebsiteMigrationNotice'
 
 interface PageQueryData {
   allMarkdownRemark: {
@@ -48,23 +49,13 @@ export default function HomePage({ location, data, pageContext }: Props) {
     <Layout location={location}>
       <Intro />
       <div style={{ marginBottom: '2rem' }}>
-        <HeadingWithLink heading="Things I can do" hideLink />
+        {/* <HeadingWithLink heading="Things I can do" hideLink /> */}
         <Skills />
       </div>
-      <div style={{ marginBottom: '2rem' }}>
-        <HeadingWithLink
-          id="coffee-summary"
-          heading="Recent coffee"
-          linkTo="/coffee"
-          linkText="View all"
-        />
-        {recentCoffee.map(shop => (
-          <CoffeeShop key={shop.name} shop={shop} compact />
-        ))}
-      </div>
+      <WebsiteMigrationNotice />
       <HeadingWithLink
         id="blog-summary"
-        heading="Recent thoughts"
+        heading="Some recent thoughts"
         linkTo="/writing"
         linkText="View all"
       />
@@ -82,6 +73,17 @@ export default function HomePage({ location, data, pageContext }: Props) {
           />
         )
       })}
+      <div style={{ marginTop: '2rem' }}>
+        <HeadingWithLink
+          id="coffee-summary"
+          heading="Some recent coffee"
+          linkTo="/coffee"
+          linkText="View all"
+        />
+        {recentCoffee.map(shop => (
+          <CoffeeShop key={shop.name} shop={shop} compact />
+        ))}
+      </div>
     </Layout>
   )
 }

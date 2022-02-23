@@ -36,7 +36,7 @@ export default function Skills() {
           )
         })}
       </div>
-      <Legend />
+      {/* <Legend /> */}
     </div>
   )
 }

@@ -24,7 +24,11 @@ export const SKILLS_CONFIG: Array<Skill> = [
     level: 'expert',
   },
   {
-    name: 'GraphQL',
+    name: 'Redux',
+    level: 'expert',
+  },
+  {
+    name: 'Cypress',
     level: 'expert',
   },
   {
@@ -32,27 +36,31 @@ export const SKILLS_CONFIG: Array<Skill> = [
     level: 'expert',
   },
   {
+    name: 'GraphQL',
+    level: 'expert',
+  },
+  {
     name: 'Pulumi',
     level: 'expert',
   },
   {
-    name: 'Serverless Applications on AWS',
+    name: 'AWS CDK',
+    level: 'expert',
+  },
+  {
+    name: 'Serverless AWS',
     level: 'expert',
   },
   {
     name: 'PostgreSQL',
-    level: 'ok',
+    level: 'expert',
   },
   {
-    name: 'Mint Lang',
-    level: 'ok',
+    name: 'Prisma',
+    level: 'expert',
   },
-  {
-    name: 'Solidity & Smart Contracts on Ethereum',
-    level: 'ok',
-  },
-  {
-    name: 'Marlowe & Smart Contracts on Cardano',
-    level: 'learning',
-  },
+  // {
+  //   name: 'Solidity & Smart Contracts on Ethereum',
+  //   level: 'expert',
+  // },
 ]
